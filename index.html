@@ -655,6 +655,9 @@ body::before {
 </head>
 <body>
 
+  
+
+
 <!-- ══════════════════════════════
      NAVBAR
 ══════════════════════════════ -->
@@ -1185,9 +1188,19 @@ body::before {
   <div class="footer-phrase">دَامَتْ دِيَارُكُمْ عَامِرَةً بِالأَفْرَاح</div>
     <div class="footer-copy">النادي النوبي — السويس &nbsp;|&nbsp; ٢٠ / ٨ / ٢٠٢٦</div>
 
-<div id="background-music-container" style="display:none;">
-  <iframe id="youtube-player" width="0" height="0" src="https://www.youtube.com/embed/iXVC4Sy443k?autoplay=1&mute=0&controls=0&loop=1&playlist=iXVC4Sy443k&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+
+   <audio id="background-audio" autoplay muted loop playsinline>
+  <source src="WhatsApp Audio 2026-05-10 at 11.41.26 PM.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const audio = document.getElementById("background-audio");
+
+  document.addEventListener("click", () => {
+    audio.muted = false;
+    audio.play();
+  }, { once: true });
+</script>
 
 <div class="scroll-top">🐊</div>
 
