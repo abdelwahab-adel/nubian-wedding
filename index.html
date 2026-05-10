@@ -655,6 +655,104 @@ body::before {
 </head>
 <body>
 
+<!-- ══════════════════════════════
+     SPLASH SCREEN
+══════════════════════════════ -->
+<div id="splash" style="
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #2C1503;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Amiri', serif;
+  direction: rtl;
+  transition: opacity 0.8s ease;
+">
+  <svg width="100%" height="12" viewBox="0 0 500 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0">
+    <rect width="500" height="12" fill="#1e4a1e"/>
+    <g fill="#D35400">
+      <polygon points="0,12 10,0 20,12"/><polygon points="20,12 30,0 40,12"/><polygon points="40,12 50,0 60,12"/>
+      <polygon points="60,12 70,0 80,12"/><polygon points="80,12 90,0 100,12"/><polygon points="100,12 110,0 120,12"/>
+      <polygon points="120,12 130,0 140,12"/><polygon points="140,12 150,0 160,12"/><polygon points="160,12 170,0 180,12"/>
+      <polygon points="180,12 190,0 200,12"/><polygon points="200,12 210,0 220,12"/><polygon points="220,12 230,0 240,12"/>
+      <polygon points="240,12 250,0 260,12"/><polygon points="260,12 270,0 280,12"/><polygon points="280,12 290,0 300,12"/>
+      <polygon points="300,12 310,0 320,12"/><polygon points="320,12 330,0 340,12"/><polygon points="340,12 350,0 360,12"/>
+      <polygon points="360,12 370,0 380,12"/><polygon points="380,12 390,0 400,12"/><polygon points="400,12 410,0 420,12"/>
+      <polygon points="420,12 430,0 440,12"/><polygon points="440,12 450,0 460,12"/><polygon points="460,12 470,0 480,12"/>
+      <polygon points="480,12 490,0 500,12"/>
+    </g>
+  </svg>
+
+  <div style="width:120px;height:2px;background:linear-gradient(90deg,transparent,#C8860A,transparent);margin-bottom:28px"></div>
+  <div style="font-family:'Scheherazade New',serif;font-size:clamp(1.6rem,5vw,2.4rem);color:#F1C40F;margin-bottom:20px;line-height:1.6">
+    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+  </div>
+  <div style="font-size:2.5rem;margin-bottom:16px;animation:splashPulse 2s ease-in-out infinite">💍</div>
+  <div style="font-size:clamp(1.2rem,4vw,1.8rem);color:#F5E6CA;margin-bottom:8px;letter-spacing:.1em">دعوة زفاف نوبية</div>
+  <div style="font-size:clamp(1rem,3vw,1.4rem);color:#C8860A;margin-bottom:32px">الأستاذ أحمد &amp; الآنسة D</div>
+  <div style="width:80px;height:1.5px;background:linear-gradient(90deg,transparent,#C8860A,transparent);margin-bottom:32px"></div>
+
+  <button onclick="enterSite()" style="
+    background: linear-gradient(135deg, #C8860A, #E8A000);
+    color: #2C1503;
+    border: none;
+    padding: 14px 48px;
+    font-family: 'Scheherazade New', serif;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(200,134,10,.4);
+    transition: transform .2s;
+    letter-spacing: .1em;
+  " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    ✨ ادخل الدعوة ✨
+  </button>
+  <div style="color:#F5E6CA;font-size:.85rem;margin-top:16px">فضلووووووس 🌴</div>
+
+  <svg width="100%" height="12" viewBox="0 0 500 12" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;left:0">
+    <rect width="500" height="12" fill="#1e4a1e"/>
+    <g fill="#D35400">
+      <polygon points="0,0 10,12 20,0"/><polygon points="20,0 30,12 40,0"/><polygon points="40,0 50,12 60,0"/>
+      <polygon points="60,0 70,12 80,0"/><polygon points="80,0 90,12 100,0"/><polygon points="100,0 110,12 120,0"/>
+      <polygon points="120,0 130,12 140,0"/><polygon points="140,0 150,12 160,0"/><polygon points="160,0 170,12 180,0"/>
+      <polygon points="180,0 190,12 200,0"/><polygon points="200,0 210,12 220,0"/><polygon points="220,0 230,12 240,0"/>
+      <polygon points="240,0 250,12 260,0"/><polygon points="260,0 270,12 280,0"/><polygon points="280,0 290,12 300,0"/>
+      <polygon points="300,0 310,12 320,0"/><polygon points="320,0 330,12 340,0"/><polygon points="340,0 350,12 360,0"/>
+      <polygon points="360,0 370,12 380,0"/><polygon points="380,0 390,12 400,0"/><polygon points="400,0 410,12 420,0"/>
+      <polygon points="420,0 430,12 440,0"/><polygon points="440,0 450,12 460,0"/><polygon points="460,0 470,12 480,0"/>
+      <polygon points="480,0 490,12 500,0"/>
+    </g>
+  </svg>
+</div>
+
+<style>
+@keyframes splashPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+</style>
+
+<audio id="background-audio" loop playsinline>
+  <source src= "WhatsApp Audio 2026-05-10 at 11.41.26 PM.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function enterSite() {
+  const audio = document.getElementById('background-audio');
+  const splash = document.getElementById('splash');
+  audio.volume = 0.6;
+  audio.play().catch(() => {});
+  splash.style.opacity = '0';
+  setTimeout(() => { splash.style.display = 'none'; document.body.style.overflow = ''; }, 800);
+}
+document.body.style.overflow = 'hidden';
+</script>
+
+
   
 
 
@@ -1187,21 +1285,6 @@ body::before {
 
   <div class="footer-phrase">دَامَتْ دِيَارُكُمْ عَامِرَةً بِالأَفْرَاح</div>
     <div class="footer-copy">النادي النوبي — السويس &nbsp;|&nbsp; ٢٠ / ٨ / ٢٠٢٦</div>
-
-
-   <audio id="background-audio" autoplay muted loop playsinline>
-  <source src="WhatsApp Audio 2026-05-10 at 11.41.26 PM.mp3" type="audio/mp3">
-</audio>
-
-<script>
-  const audio = document.getElementById("background-audio");
-
-  document.addEventListener("click", () => {
-    audio.muted = false;
-    audio.play();
-  }, { once: true });
-</script>
-
 <div class="scroll-top">🐊</div>
 
 <script src="script.js"></script>
