@@ -37,7 +37,7 @@ body::before {
   content:'';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves=4 result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='0.5' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='%23333' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1000;
   opacity: .5;
@@ -656,6 +656,13 @@ body::before {
 <body>
 
 <!-- ══════════════════════════════
+     BACKGROUND MUSIC
+══════════════════════════════ -->
+<div id="background-music-container" style="display:none;">
+  <iframe id="youtube-player" width="0" height="0" src="https://www.youtube.com/embed/iXVC4Sy443k?autoplay=1&mute=0&controls=0&loop=1&playlist=iXVC4Sy443k&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<!-- ══════════════════════════════
      NAVBAR
 ══════════════════════════════ -->
 <nav class="navbar">
@@ -998,39 +1005,72 @@ body::before {
 <svg width="100%" viewBox="0 0 500 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;transform:scaleY(-1)">
   <rect width="500" height="24" fill="#1e4a1e"/>
   <g fill="#C8860A">
-    <polygon points="0,0 12,12 24,0"/><polygon points="24,0 36,12 48,0"/><polygon points="48,0 60,12 72,0"/>
-    <polygon points="72,0 84,12 96,0"/><polygon points="96,0 108,12 120,0"/><polygon points="120,0 132,12 144,0"/>
-    <polygon points="144,0 156,12 168,0"/><polygon points="168,0 180,12 192,0"/><polygon points="192,0 204,12 216,0"/>
-    <polygon points="216,0 228,12 240,0"/><polygon points="240,0 252,12 264,0"/><polygon points="264,0 276,12 288,0"/>
-    <polygon points="288,0 300,12 312,0"/><polygon points="312,0 324,12 336,0"/><polygon points="336,0 348,12 360,0"/>
-    <polygon points="360,0 372,12 384,0"/><polygon points="384,0 396,12 408,0"/><polygon points="408,0 420,12 432,0"/>
-    <polygon points="432,0 444,12 456,0"/><polygon points="456,0 468,12 480,0"/><polygon points="480,0 492,12 500,0"/>
+    <polygon points="0,0 12,12 24,0"/>
+    <polygon points="24,0 36,12 48,0"/>
+    <polygon points="48,0 60,12 72,0"/>
+    <polygon points="72,0 84,12 96,0"/>
+    <polygon points="96,0 108,12 120,0"/>
+    <polygon points="120,0 132,12 144,0"/>
+    <polygon points="144,0 156,12 168,0"/>
+    <polygon points="168,0 180,12 192,0"/>
+    <polygon points="192,0 204,12 216,0"/>
+    <polygon points="216,0 228,12 240,0"/>
+    <polygon points="240,0 252,12 264,0"/>
+    <polygon points="264,0 276,12 288,0"/>
+    <polygon points="288,0 300,12 312,0"/>
+    <polygon points="312,0 324,12 336,0"/>
+    <polygon points="336,0 348,12 360,0"/>
+    <polygon points="360,0 372,12 384,0"/>
+    <polygon points="384,0 396,12 408,0"/>
+    <polygon points="408,0 420,12 432,0"/>
+    <polygon points="432,0 444,12 456,0"/>
+    <polygon points="456,0 468,12 480,0"/>
+    <polygon points="480,0 492,12 500,0"/>
+  </g>
+  <g fill="#1E4A6E" opacity=".8">
+    <polygon points="12,0 24,12 36,0"/>
+    <polygon points="36,0 48,12 60,0"/>
+    <polygon points="60,0 72,12 84,0"/>
+    <polygon points="84,0 96,12 108,0"/>
+    <polygon points="108,0 120,12 132,0"/>
+    <polygon points="132,0 144,12 156,0"/>
+    <polygon points="156,0 168,12 180,0"/>
+    <polygon points="180,0 192,12 204,0"/>
+    <polygon points="204,0 216,12 228,0"/>
+    <polygon points="228,0 240,12 252,0"/>
+    <polygon points="252,0 264,12 276,0"/>
+    <polygon points="276,0 288,12 300,0"/>
+    <polygon points="300,0 312,12 324,0"/>
+    <polygon points="324,0 336,12 348,0"/>
+    <polygon points="348,0 360,12 372,0"/>
+    <polygon points="372,0 384,12 396,0"/>
+    <polygon points="396,0 408,12 420,0"/>
+    <polygon points="420,0 432,12 444,0"/>
+    <polygon points="444,0 456,12 468,0"/>
+    <polygon points="468,0 480,12 492,0"/>
   </g>
   <line x1="0" y1="23" x2="500" y2="23" stroke="#C8860A" stroke-width="2"/>
 </svg>
 
 <section id="date" class="date-section">
   <div class="date-inner">
-    <div class="section-title">موعد الحفل</div>
-    <div class="section-subtitle">وذلك بمشيئة الله تعالى</div>
+    <div class="date-phrase">
+      حفل الزفاف يقام يوم <strong>الخميس</strong>
+    </div>
 
     <div class="date-boxes">
       <div class="date-box">
         <div class="date-box-label">اليوم</div>
-        <div class="date-box-value">الخميس</div>
+        <div class="date-box-value">20</div>
       </div>
       <div class="date-box">
-        <div class="date-box-label">التاريخ</div>
-        <div class="date-box-value">٢٠ / ٨ / ٢٠٢٦</div>
+        <div class="date-box-label">الشهر</div>
+        <div class="date-box-value">أغسطس</div>
       </div>
       <div class="date-box">
-        <div class="date-box-label">الوقت</div>
-        <div class="date-box-value">٨:٠٠ م</div>
+        <div class="date-box-label">السنة</div>
+        <div class="date-box-value">2026</div>
       </div>
-    </div>
-
-    <div class="date-phrase" style="margin-top:16px">
-      <strong>النادي النوبي — السويس</strong>
     </div>
   </div>
 </section>
@@ -1039,43 +1079,41 @@ body::before {
      COUNTDOWN
 ══════════════════════════════ -->
 <section class="countdown-section">
-  <div class="countdown-title">العد التنازلي للحفل</div>
-  <div class="cd-grid" id="cdGrid">
-    <div class="cd-box"><span class="cd-num" id="cdD">--</span><span class="cd-lbl">أيام</span></div>
-    <div class="cd-box"><span class="cd-num" id="cdH">--</span><span class="cd-lbl">ساعات</span></div>
-    <div class="cd-box"><span class="cd-num" id="cdM">--</span><span class="cd-lbl">دقائق</span></div>
-    <div class="cd-box"><span class="cd-num" id="cdS">--</span><span class="cd-lbl">ثواني</span></div>
+  <div class="countdown-title">العد العكسي إلى الزفاف</div>
+  <div class="cd-grid">
+    <div class="cd-box">
+      <span class="cd-num">00</span>
+      <span class="cd-lbl">أيام</span>
+    </div>
+    <div class="cd-box">
+      <span class="cd-num">00</span>
+      <span class="cd-lbl">ساعات</span>
+    </div>
+    <div class="cd-box">
+      <span class="cd-num">00</span>
+      <span class="cd-lbl">دقائق</span>
+    </div>
+    <div class="cd-box">
+      <span class="cd-num">00</span>
+      <span class="cd-lbl">ثواني</span>
+    </div>
   </div>
-  <div class="cd-done" id="cdDone">🌙 لقد حان موعد الاحتفال 🌙</div>
 </section>
 
 <!-- ══════════════════════════════
      MAP
 ══════════════════════════════ -->
-<svg width="100%" viewBox="0 0 500 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-  <rect width="500" height="24" fill="#1e4a1e"/>
-  <g fill="#D35400">
-    <polygon points="0,24 12,12 24,24"/><polygon points="24,24 36,12 48,24"/><polygon points="48,24 60,12 72,24"/>
-    <polygon points="72,24 84,12 96,24"/><polygon points="96,24 108,12 120,24"/><polygon points="120,24 132,12 144,24"/>
-    <polygon points="144,24 156,12 168,24"/><polygon points="168,24 180,12 192,24"/><polygon points="192,24 204,12 216,24"/>
-    <polygon points="216,24 228,12 240,24"/><polygon points="240,24 252,12 264,24"/><polygon points="264,24 276,12 288,24"/>
-    <polygon points="288,24 300,12 312,24"/><polygon points="312,24 324,12 336,24"/><polygon points="336,24 348,12 360,24"/>
-    <polygon points="360,24 372,12 384,24"/><polygon points="384,24 396,12 408,24"/><polygon points="408,24 420,12 432,24"/>
-    <polygon points="432,24 444,12 456,24"/><polygon points="456,24 468,12 480,24"/><polygon points="480,24 492,12 500,24"/>
-  </g>
-  <line x1="0" y1="1" x2="500" y2="1" stroke="#C8860A" stroke-width="2"/>
-</svg>
-
 <section id="location" class="map-section">
   <div class="map-inner">
-    <div class="section-title">📍 موقع الحفل</div>
-    <div class="section-subtitle">النادي النوبي — السويس</div>
+    <h2 class="section-title">📍 موقع الحفل</h2>
+    <p class="section-subtitle">انضموا إلينا في مكان جميل على ضفاف النيل</p>
+
     <div class="map-frame">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=32.4573%2C30.0078%2C32.4773%2C30.0278&layer=mapnik&marker=30.0178%2C32.4673"
-        allowfullscreen loading="lazy" title="النادي النوبي السويس"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3437.5529823562236!2d32.899137!3d30.055219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584e0e0e0e0e0d%3A0x0!2sNubia!5e0!3m2!1sen!2seg!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <a class="map-cta" href="https://www.google.com/maps/place/Nubia+Sports+Club+in+Suez/@30.0178,32.4673,17z" target="_blank" rel="noopener">
-      🗺 عرض الموقع على خرائط Google
+
+    <a href="https://maps.google.com/?q=Nubia" target="_blank" class="map-cta">
+      🗺️ فتح الخريطة
     </a>
   </div>
 </section>
@@ -1083,171 +1121,42 @@ body::before {
 <!-- ══════════════════════════════
      FOOTER
 ══════════════════════════════ -->
-<!-- footer top border -->
-<svg width="100%" viewBox="0 0 500 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;background:#1E4A6E">
-  <rect width="500" height="60" fill="#1e4a1e"/>
-  <!-- crocs row -->
-  <g>
-    <g transform="translate(55,30)">
-      <ellipse cx="0" cy="0" rx="40" ry="13" fill="#27AE60"/>
-      <polygon points="-40,-12 -28,0 -40,12" fill="#2d8a50"/>
-      <polygon points="40,-10 30,0 40,10" fill="#27AE60"/>
-      <circle cx="-28" cy="-7" r="2.5" fill="#F1C40F"/>
-      <circle cx="-28" cy="7" r="2.5" fill="#F1C40F"/>
-      <g fill="#1e4a1e" opacity=".6">
-        <rect x="-16" y="-13" width="5" height="5" rx="1"/>
-        <rect x="-6" y="-13" width="5" height="5" rx="1"/>
-        <rect x="4" y="-13" width="5" height="5" rx="1"/>
-        <rect x="14" y="-13" width="5" height="5" rx="1"/>
-        <rect x="-16" y="8" width="5" height="5" rx="1"/>
-        <rect x="-6" y="8" width="5" height="5" rx="1"/>
-        <rect x="4" y="8" width="5" height="5" rx="1"/>
-        <rect x="14" y="8" width="5" height="5" rx="1"/>
-      </g>
-    </g>
-    <g transform="translate(200,30)">
-      <ellipse cx="0" cy="0" rx="40" ry="13" fill="#27AE60"/>
-      <polygon points="-40,-12 -28,0 -40,12" fill="#2d8a50"/>
-      <polygon points="40,-10 30,0 40,10" fill="#27AE60"/>
-      <circle cx="-28" cy="-7" r="2.5" fill="#F1C40F"/>
-      <circle cx="-28" cy="7" r="2.5" fill="#F1C40F"/>
-      <g fill="#1e4a1e" opacity=".6">
-        <rect x="-16" y="-13" width="5" height="5" rx="1"/>
-        <rect x="-6" y="-13" width="5" height="5" rx="1"/>
-        <rect x="4" y="-13" width="5" height="5" rx="1"/>
-        <rect x="14" y="-13" width="5" height="5" rx="1"/>
-        <rect x="-16" y="8" width="5" height="5" rx="1"/>
-        <rect x="-6" y="8" width="5" height="5" rx="1"/>
-        <rect x="4" y="8" width="5" height="5" rx="1"/>
-        <rect x="14" y="8" width="5" height="5" rx="1"/>
-      </g>
-    </g>
-    <!-- pyramid center -->
-    <polygon points="250,5 265,55 235,55" fill="#C8860A"/>
-    <polygon points="250,15 260,45 240,45" fill="#E8A000" opacity=".5"/>
-    <g transform="translate(345,30) scale(-1,1)">
-      <ellipse cx="0" cy="0" rx="40" ry="13" fill="#27AE60"/>
-      <polygon points="-40,-12 -28,0 -40,12" fill="#2d8a50"/>
-      <polygon points="40,-10 30,0 40,10" fill="#27AE60"/>
-      <circle cx="-28" cy="-7" r="2.5" fill="#F1C40F"/>
-      <circle cx="-28" cy="7" r="2.5" fill="#F1C40F"/>
-      <g fill="#1e4a1e" opacity=".6">
-        <rect x="-16" y="-13" width="5" height="5" rx="1"/>
-        <rect x="-6" y="-13" width="5" height="5" rx="1"/>
-        <rect x="4" y="-13" width="5" height="5" rx="1"/>
-        <rect x="14" y="-13" width="5" height="5" rx="1"/>
-        <rect x="-16" y="8" width="5" height="5" rx="1"/>
-        <rect x="-6" y="8" width="5" height="5" rx="1"/>
-        <rect x="4" y="8" width="5" height="5" rx="1"/>
-        <rect x="14" y="8" width="5" height="5" rx="1"/>
-      </g>
-    </g>
-    <g transform="translate(460,30) scale(-1,1)">
-      <ellipse cx="0" cy="0" rx="34" ry="11" fill="#27AE60"/>
-      <polygon points="-34,-10 -24,0 -34,10" fill="#2d8a50"/>
-      <polygon points="34,-8 26,0 34,8" fill="#27AE60"/>
-      <circle cx="-24" cy="-6" r="2.5" fill="#F1C40F"/>
-    </g>
-  </g>
-  <line x1="0" y1="59" x2="500" y2="59" stroke="#C8860A" stroke-width="2"/>
-</svg>
-
 <footer class="footer">
+  <div class="boats">
+    <svg class="boat" width="50" height="40" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="10,40 20,10 50,10 60,40" fill="#8b5a00"/>
+      <polygon points="20,15 28,8 28,18" fill="#F1C40F"/>
+      <polygon points="35,15 43,8 43,18" fill="#F1C40F" opacity=".7"/>
+      <line x1="35" y1="18" x2="35" y2="40" stroke="#C8860A" stroke-width="1.5"/>
+    </svg>
+    <svg class="boat" width="50" height="40" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="10,40 20,10 50,10 60,40" fill="#8b5a00"/>
+      <polygon points="20,15 28,8 28,18" fill="#F1C40F"/>
+      <polygon points="35,15 43,8 43,18" fill="#F1C40F" opacity=".7"/>
+      <line x1="35" y1="18" x2="35" y2="40" stroke="#C8860A" stroke-width="1.5"/>
+    </svg>
+    <svg class="boat" width="50" height="40" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="10,40 20,10 50,10 60,40" fill="#8b5a00"/>
+      <polygon points="20,15 28,8 28,18" fill="#F1C40F"/>
+      <polygon points="35,15 43,8 43,18" fill="#F1C40F" opacity=".7"/>
+      <line x1="35" y1="18" x2="35" y2="40" stroke="#C8860A" stroke-width="1.5"/>
+    </svg>
+  </div>
+
   <div class="nile-water">
     <div class="wave"></div>
     <div class="wave"></div>
   </div>
 
-  <!-- Sailboats -->
-  <div class="boats">
-    <svg class="boat" width="55" height="55" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="30,5 30,42 12,42" fill="rgba(245,230,202,.7)"/>
-      <polygon points="30,10 30,42 46,42" fill="rgba(245,230,202,.4)"/>
-      <line x1="30" y1="3" x2="30" y2="44" stroke="#C8860A" stroke-width="1.5"/>
-      <ellipse cx="30" cy="50" rx="20" ry="5" fill="#1E4A6E" opacity=".6"/>
-      <path d="M10,48 Q20,44 30,48 Q40,52 50,48" fill="none" stroke="#4a8aaa" stroke-width="1"/>
-    </svg>
-    <svg class="boat" width="40" height="40" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="30,8 30,42 14,42" fill="rgba(245,230,202,.6)"/>
-      <polygon points="30,12 30,42 44,42" fill="rgba(245,230,202,.35)"/>
-      <line x1="30" y1="6" x2="30" y2="44" stroke="#C8860A" stroke-width="1.5"/>
-      <ellipse cx="30" cy="50" rx="18" ry="4" fill="#1E4A6E" opacity=".5"/>
-    </svg>
-    <svg class="boat" width="50" height="50" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="30,5 30,42 12,42" fill="rgba(245,230,202,.7)"/>
-      <polygon points="30,10 30,42 46,42" fill="rgba(245,230,202,.4)"/>
-      <line x1="30" y1="3" x2="30" y2="44" stroke="#C8860A" stroke-width="1.5"/>
-      <ellipse cx="30" cy="50" rx="20" ry="5" fill="#1E4A6E" opacity=".6"/>
-      <path d="M10,48 Q20,44 30,48 Q40,52 50,48" fill="none" stroke="#4a8aaa" stroke-width="1"/>
-    </svg>
-  </div>
-
-  <div class="footer-phrase">دَامَتْ دِيَارُكُمْ عَامِرَةً بِالأَفْرَاح</div>
-  <div class="footer-copy">النادي النوبي — السويس &nbsp;|&nbsp; ٢٠ / ٨ / ٢٠٢٦</div>
-
-  <!-- bottom geo strip -->
-  <svg width="100%" height="14" viewBox="0 0 500 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:18px">
-    <rect width="500" height="14" fill="#1e4a1e"/>
-    <g fill="#D35400">
-      <polygon points="0,14 10,0 20,14"/><polygon points="20,14 30,0 40,14"/><polygon points="40,14 50,0 60,14"/>
-      <polygon points="60,14 70,0 80,14"/><polygon points="80,14 90,0 100,14"/><polygon points="100,14 110,0 120,14"/>
-      <polygon points="120,14 130,0 140,14"/><polygon points="140,14 150,0 160,14"/><polygon points="160,14 170,0 180,14"/>
-      <polygon points="180,14 190,0 200,14"/><polygon points="200,14 210,0 220,14"/><polygon points="220,14 230,0 240,14"/>
-      <polygon points="240,14 250,0 260,14"/><polygon points="260,14 270,0 280,14"/><polygon points="280,14 290,0 300,14"/>
-      <polygon points="300,14 310,0 320,14"/><polygon points="320,14 330,0 340,14"/><polygon points="340,14 350,0 360,14"/>
-      <polygon points="360,14 370,0 380,14"/><polygon points="380,14 390,0 400,14"/><polygon points="400,14 410,0 420,14"/>
-      <polygon points="420,14 430,0 440,14"/><polygon points="440,14 450,0 460,14"/><polygon points="460,14 470,0 480,14"/>
-      <polygon points="480,14 490,0 500,14"/>
-    </g>
-  </svg>
+  <div class="footer-phrase">🎉 ننتظر قدومك 🎉</div>
+  <div class="footer-copy">© 2026 دعوة زفاف نوبية | مع أطيب التمنيات</div>
 </footer>
 
-<!-- Scroll to top -->
-<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="40" cy="40" rx="36" ry="12" fill="#27AE60"/>
-    <circle cx="22" cy="32" r="4" fill="#F1C40F"/>
-    <circle cx="22" cy="48" r="4" fill="#F1C40F"/>
-  </svg>
-</div>
+<!-- ══════════════════════════════
+     SCROLL TO TOP BUTTON
+══════════════════════════════ -->
+<div class="scroll-top">🐊</div>
 
-<script>
-// Countdown
-const TARGET = new Date('2026-08-20T20:00:00');
-function pad(n){ return String(n).padStart(2,'0'); }
-function tick(){
-  const diff = TARGET - new Date();
-  if(diff <= 0){
-    document.getElementById('cdGrid').style.display='none';
-    document.getElementById('cdDone').style.display='block';
-    return;
-  }
-  document.getElementById('cdD').textContent = Math.floor(diff/86400000);
-  document.getElementById('cdH').textContent = pad(Math.floor(diff%86400000/3600000));
-  document.getElementById('cdM').textContent = pad(Math.floor(diff%3600000/60000));
-  document.getElementById('cdS').textContent = pad(Math.floor(diff%60000/1000));
-}
-tick(); setInterval(tick,1000);
-
-// Scroll top button
-const st = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => {
-  st.classList.toggle('visible', window.scrollY > 300);
-});
-
-// Intersection Observer for fade-in
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.style.animationPlayState = 'running';
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.family-card, .date-box, .cd-box').forEach(el => {
-  el.style.animationPlayState = 'paused';
-  observer.observe(el);
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
