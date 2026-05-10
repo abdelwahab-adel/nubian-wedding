@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعوة زفاف — الأستاذ أحمد & الآنسة D</title>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:  #F5E6CA;
+  --parchment2: #EDD9A3;
+  --nile:       #1E4A6E;
+  --terracotta: #D35400;
+  --green:      #27AE60;
+  --sun:        #F1C40F;
+  --dark-brown: #2C1503;
+  --mid-brown:  #6B3A1F;
+  --gold:       #C8860A;
+  --cream-dark: #D4C090;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Amiri', serif;
+  background: var(--dark-brown);
+  color: var(--dark-brown);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ══════════════════════════════
+   NOISE TEXTURE OVERLAY
+══════════════════════════════ */
+body::before {
+  content:'';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .5;
+}
+
+/* ══════════════════════════════
+   GEOMETRIC BORDER STRIP (reusable)
+══════════════════════════════ */
+.geo-strip {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* ══════════════════════════════
+   NAVBAR
+══════════════════════════════ */
+.navbar {
+  background: var(--dark-brown);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px 24px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-text {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1rem;
+  color: var(--sun);
+  letter-spacing: .06em;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--parchment);
+  text-decoration: none;
+  font-size: .9rem;
+  letter-spacing: .06em;
+  transition: color .2s;
+  position: relative;
+}
+.nav-links a::after {
+  content:'';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 2px;
+  background: var(--terracotta);
+  transform: scaleX(0);
+  transition: transform .25s;
+}
+.nav-links a:hover { color: var(--sun); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ══════════════════════════════
+   HERO SECTION
+══════════════════════════════ */
+.hero {
+  background: var(--parchment);
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+/* parchment texture on hero */
+.hero::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(211,84,0,.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(30,74,110,.05) 0%, transparent 60%),
+    linear-gradient(180deg, #F5E6CA 0%, #EDD9A3 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 36px 20px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: heroFade 1.2s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes heroFade {
+  from { opacity:0; transform: translateY(40px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* swallows */
+.swallows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.swallow {
+  position: absolute;
+  animation: fly linear infinite;
+  opacity: .18;
+}
+.swallow:nth-child(1) { top:15%; right:10%; animation-duration:18s; animation-delay:0s; }
+.swallow:nth-child(2) { top:25%; right:25%; animation-duration:22s; animation-delay:-5s; }
+.swallow:nth-child(3) { top:10%; left:15%; animation-duration:20s; animation-delay:-8s; }
+.swallow:nth-child(4) { top:40%; left:8%;  animation-duration:25s; animation-delay:-12s; }
+.swallow:nth-child(5) { top:8%;  right:40%; animation-duration:17s; animation-delay:-3s; }
+
+@keyframes fly {
+  0%   { transform: translateX(0) translateY(0) scaleX(1); }
+  25%  { transform: translateX(-30px) translateY(-15px) scaleX(1); }
+  50%  { transform: translateX(0) translateY(-25px) scaleX(-1); }
+  75%  { transform: translateX(30px) translateY(-10px) scaleX(-1); }
+  100% { transform: translateX(0) translateY(0) scaleX(1); }
+}
+
+.hero-basmala {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  color: var(--dark-brown);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  animation: heroFade 1.2s .15s both;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+  animation: heroFade 1.2s .25s both;
+}
+.hero-divider-line {
+  width: 80px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-divider-icon { color: var(--terracotta); font-size: 1.2rem; }
+
+.hero-verse {
+  font-size: clamp(.9rem, 2.8vw, 1.1rem);
+  color: var(--mid-brown);
+  line-height: 2.2;
+  font-style: italic;
+  animation: heroFade 1.2s .3s both;
+}
+
+.hero-honor {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  color: var(--mid-brown);
+  margin: 20px 0 10px;
+  letter-spacing: .1em;
+  animation: heroFade 1.2s .4s both;
+}
+
+/* ══════════════════════════════
+   FAMILIES SECTION
+══════════════════════════════ */
+.families-section {
+  background: var(--parchment);
+  padding: 0 20px 30px;
+  position: relative;
+}
+.families-section::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #EDD9A3 0%, #F5E6CA 100%);
+  pointer-events: none;
+}
+.families-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* palm divider between columns */
+.families-grid::after {
+  content:'';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--gold), var(--gold), transparent);
+}
+
+.family-card {
+  text-align: center;
+  animation: fadeSlide .8s cubic-bezier(.22,1,.36,1) both;
+}
+.family-card:nth-child(1) { animation-delay: .1s; }
+.family-card:nth-child(2) { animation-delay: .2s; }
+
+@keyframes fadeSlide {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.family-title {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  color: var(--terracotta);
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+}
+.family-names-list {
+  font-size: clamp(.78rem, 2.4vw, .92rem);
+  color: var(--dark-brown);
+  line-height: 2.1;
+}
+
+/* ══════════════════════════════
+   COUPLE SECTION
+══════════════════════════════ */
+.couple-section {
+  background: var(--dark-brown);
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.couple-section::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(200,134,10,.08) 0%, transparent 70%);
+}
+
+.couple-invite {
+  font-size: clamp(.9rem, 2.8vw, 1.05rem);
+  color: var(--parchment2);
+  letter-spacing: .1em;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+  animation: fadeSlide .8s .1s both;
+}
+.couple-names {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 700;
+  color: var(--sun);
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+  animation: fadeSlide .8s .2s both;
+}
+.couple-amp {
+  font-size: .55em;
+  color: var(--terracotta);
+  display: block;
+}
+
+/* ══════════════════════════════
+   DATE SECTION
+══════════════════════════════ */
+.date-section {
+  background: var(--parchment);
+  padding: 36px 20px;
+  text-align: center;
+  position: relative;
+}
+.date-section::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #F5E6CA 0%, #EDD9A3 100%);
+  pointer-events: none;
+}
+.date-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.date-phrase {
+  font-size: clamp(.88rem, 2.8vw, 1rem);
+  color: var(--mid-brown);
+  line-height: 2.2;
+  margin-bottom: 24px;
+  animation: fadeSlide .8s .1s both;
+}
+.date-phrase strong { color: var(--terracotta); font-size: 1.1em; }
+
+.date-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 20px 0;
+  animation: fadeSlide .8s .2s both;
+}
+.date-box {
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  padding: 16px 8px;
+  background: rgba(255,255,255,.4);
+  position: relative;
+  overflow: hidden;
+}
+.date-box::before {
+  content:'';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--terracotta);
+}
+.date-box-label {
+  font-size: .68rem;
+  color: var(--gold);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.date-box-value {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  font-weight: 700;
+  color: var(--dark-brown);
+  line-height: 1.2;
+}
+
+/* ══════════════════════════════
+   COUNTDOWN
+══════════════════════════════ */
+.countdown-section {
+  padding: 22px 20px;
+  text-align: center;
+  background: var(--dark-brown);
+}
+.countdown-title {
+  font-size: .72rem;
+  color: var(--parchment2);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.cd-grid {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.cd-box {
+  border: 2px solid var(--terracotta);
+  border-radius: 8px;
+  padding: 16px 22px;
+  background: rgba(211,84,0,.08);
+  min-width: 80px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s;
+}
+.cd-box:hover { transform: translateY(-3px); }
+.cd-box::after {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(241,196,15,.05) 0%, transparent 100%);
+}
+.cd-num {
+  display: block;
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 700;
+  color: var(--sun);
+  line-height: 1;
+}
+.cd-lbl {
+  display: block;
+  font-size: .65rem;
+  color: var(--parchment2);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.cd-done {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.5rem;
+  color: var(--sun);
+  display: none;
+  padding: 20px;
+}
+
+/* ══════════════════════════════
+   MAP SECTION
+══════════════════════════════ */
+.map-section {
+  background: var(--parchment);
+  padding: 36px 20px;
+  text-align: center;
+  position: relative;
+}
+.map-section::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #EDD9A3 0%, #F5E6CA 100%);
+}
+.map-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.section-title {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.3rem, 4.5vw, 2rem);
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.section-subtitle {
+  font-size: clamp(.82rem, 2.5vw, .95rem);
+  color: var(--mid-brown);
+  margin-bottom: 24px;
+  letter-spacing: .06em;
+}
+.map-frame {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 8px 30px rgba(0,0,0,.2);
+  height: 280px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.map-frame::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  border: 6px solid transparent;
+  border-image: linear-gradient(135deg, var(--terracotta), var(--gold), var(--nile)) 1;
+  pointer-events: none;
+  z-index: 2;
+}
+.map-frame iframe { width:100%; height:100%; border:none; display:block; }
+.map-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--terracotta), #a84300);
+  color: var(--parchment);
+  border-radius: 4px;
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: .06em;
+  box-shadow: 0 4px 16px rgba(211,84,0,.35);
+  transition: transform .2s, box-shadow .2s;
+  border: 1px solid rgba(241,196,15,.3);
+  position: relative;
+  overflow: hidden;
+}
+.map-cta::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(241,196,15,.15), transparent);
+}
+.map-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(211,84,0,.45); }
+
+/* ══════════════════════════════
+   FOOTER (Nile scene)
+══════════════════════════════ */
+.footer {
+  background: var(--nile);
+  padding: 30px 20px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Nile water animation */
+.nile-water {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  overflow: hidden;
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 60px;
+  background: rgba(255,255,255,.06);
+  border-radius: 50% 50% 0 0;
+  animation: wave linear infinite;
+}
+.wave:nth-child(1) { animation-duration: 8s; }
+.wave:nth-child(2) { animation-duration: 12s; animation-delay: -4s; opacity: .5; }
+@keyframes wave {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.footer-phrase {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--sun);
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+}
+.footer-copy {
+  font-size: .75rem;
+  color: rgba(245,230,202,.5);
+  letter-spacing: .08em;
+  position: relative;
+  z-index: 2;
+}
+
+/* Boats in footer */
+.boats {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 10px 0 50px;
+  position: relative;
+  z-index: 2;
+}
+.boat {
+  animation: sailFloat ease-in-out infinite;
+}
+.boat:nth-child(1) { animation-duration: 6s; }
+.boat:nth-child(2) { animation-duration: 8s; animation-delay: -3s; }
+.boat:nth-child(3) { animation-duration: 7s; animation-delay: -1.5s; }
+@keyframes sailFloat {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+/* ══════════════════════════════
+   SCROLL TO TOP (crocodile)
+══════════════════════════════ */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  background: var(--dark-brown);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 200;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .3s, transform .3s;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+}
+.scroll-top.visible { opacity: 1; transform: translateY(0); }
+.scroll-top:hover { background: var(--terracotta); }
+
+/* ══════════════════════════════
+   SECTION DIVIDER (palm leaf)
+══════════════════════════════ */
+.palm-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 12px 20px;
+  position: relative;
+  z-index: 2;
+}
+.palm-divider-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 560px) {
+  .families-grid { grid-template-columns: 1fr; gap: 30px; }
+  .families-grid::after { display: none; }
+  .date-boxes { grid-template-columns: repeat(3,1fr); }
+  .nav-links { display: none; }
+  .cd-box { padding: 12px 14px; min-width: 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     NAVBAR
+══════════════════════════════ -->
+<nav class="navbar">
+  <!-- top geo strip -->
+  <svg width="100%" height="10" viewBox="0 0 500 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="500" height="10" fill="#1e4a1e"/>
+    <polygon points="0,0 10,10 20,0" fill="#D35400"/>
+    <polygon points="20,0 30,10 40,0" fill="#F1C40F"/>
+    <polygon points="40,0 50,10 60,0" fill="#1E4A6E"/>
+    <polygon points="60,0 70,10 80,0" fill="#D35400"/>
+    <polygon points="80,0 90,10 100,0" fill="#F1C40F"/>
+    <polygon points="100,0 110,10 120,0" fill="#1E4A6E"/>
+    <polygon points="120,0 130,10 140,0" fill="#D35400"/>
+    <polygon points="140,0 150,10 160,0" fill="#F1C40F"/>
+    <polygon points="160,0 170,10 180,0" fill="#1E4A6E"/>
+    <polygon points="180,0 190,10 200,0" fill="#D35400"/>
+    <polygon points="200,0 210,10 220,0" fill="#F1C40F"/>
+    <polygon points="220,0 230,10 240,0" fill="#1E4A6E"/>
+    <polygon points="240,0 250,10 260,0" fill="#D35400"/>
+    <polygon points="260,0 270,10 280,0" fill="#F1C40F"/>
+    <polygon points="280,0 290,10 300,0" fill="#1E4A6E"/>
+    <polygon points="300,0 310,10 320,0" fill="#D35400"/>
+    <polygon points="320,0 330,10 340,0" fill="#F1C40F"/>
+    <polygon points="340,0 350,10 360,0" fill="#1E4A6E"/>
+    <polygon points="360,0 370,10 380,0" fill="#D35400"/>
+    <polygon points="380,0 390,10 400,0" fill="#F1C40F"/>
+    <polygon points="400,0 410,10 420,0" fill="#1E4A6E"/>
+    <polygon points="420,0 430,10 440,0" fill="#D35400"/>
+    <polygon points="440,0 450,10 460,0" fill="#F1C40F"/>
+    <polygon points="460,0 470,10 480,0" fill="#1E4A6E"/>
+    <polygon points="480,0 490,10 500,0" fill="#D35400"/>
+  </svg>
+  <div class="nav-inner">
+    <!-- Logo -->
+    <div class="nav-logo">
+      <svg width="40" height="40" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="38" fill="#1a2f5a"/>
+        <circle cx="40" cy="40" r="38" fill="none" stroke="#C8860A" stroke-width="2.5"/>
+        <path d="M40,10 A14,14 0 1,1 54,30 A10,8 0 1,0 40,10Z" fill="#C8860A"/>
+        <circle cx="52" cy="14" r="2" fill="#F1C40F"/>
+        <polygon points="40,28 26,46 54,46" fill="#C8860A"/>
+        <rect x="28" y="46" width="24" height="14" fill="#E8A000"/>
+        <rect x="34" y="49" width="12" height="11" fill="#1a2f5a"/>
+        <line x1="20" y1="60" x2="20" y2="40" stroke="#5a3000" stroke-width="2"/>
+        <path d="M20,40 Q12,34 8,30 Q14,33 17,40" fill="#27AE60"/>
+        <path d="M20,42 Q26,36 29,32 Q27,38 22,42" fill="#27AE60"/>
+        <line x1="60" y1="60" x2="60" y2="40" stroke="#5a3000" stroke-width="2"/>
+        <path d="M60,40 Q68,34 72,30 Q66,33 63,40" fill="#27AE60"/>
+        <path d="M60,42 Q54,36 51,32 Q53,38 58,42" fill="#27AE60"/>
+        <ellipse cx="40" cy="62" rx="18" ry="3" fill="#1E4A6E" opacity=".7"/>
+      </svg>
+      <span class="nav-logo-text">دعوة زفاف نوبية</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero">الرئيسية</a></li>
+      <li><a href="#couple">العريسين</a></li>
+      <li><a href="#date">التاريخ</a></li>
+      <li><a href="#location">الموقع</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<!-- Top border -->
+<svg width="100%" viewBox="0 0 500 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;background:#2C1503">
+  <rect width="500" height="70" fill="#1e4a1e"/>
+  <g>
+    <polygon points="0,0 25,28 50,0"   fill="#D35400"/>
+    <polygon points="50,0 75,28 100,0"  fill="#F1C40F"/>
+    <polygon points="100,0 125,28 150,0" fill="#1E4A6E"/>
+    <polygon points="150,0 175,28 200,0" fill="#D35400"/>
+    <polygon points="200,0 225,28 250,0" fill="#F1C40F"/>
+    <polygon points="250,0 275,28 300,0" fill="#1E4A6E"/>
+    <polygon points="300,0 325,28 350,0" fill="#D35400"/>
+    <polygon points="350,0 375,28 400,0" fill="#F1C40F"/>
+    <polygon points="400,0 425,28 450,0" fill="#1E4A6E"/>
+    <polygon points="450,0 475,28 500,0" fill="#D35400"/>
+  </g>
+  <g opacity=".7">
+    <polygon points="25,0 50,28 75,0"   fill="#F1C40F"/>
+    <polygon points="75,0 100,28 125,0"  fill="#D35400"/>
+    <polygon points="125,0 150,28 175,0" fill="#27AE60"/>
+    <polygon points="175,0 200,28 225,0" fill="#1E4A6E"/>
+    <polygon points="225,0 250,28 275,0" fill="#F1C40F"/>
+    <polygon points="275,0 300,28 325,0" fill="#D35400"/>
+    <polygon points="325,0 350,28 375,0" fill="#27AE60"/>
+    <polygon points="375,0 400,28 425,0" fill="#1E4A6E"/>
+    <polygon points="425,0 450,28 475,0" fill="#F1C40F"/>
+  </g>
+  <!-- cowrie shells row -->
+  <rect y="28" width="500" height="16" fill="#C8860A"/>
+  <g fill="#F5E6CA" opacity=".8">
+    <ellipse cx="25" cy="36" rx="7" ry="10"/>
+    <ellipse cx="75" cy="36" rx="7" ry="10"/>
+    <ellipse cx="125" cy="36" rx="7" ry="10"/>
+    <ellipse cx="175" cy="36" rx="7" ry="10"/>
+    <ellipse cx="225" cy="36" rx="7" ry="10"/>
+    <ellipse cx="275" cy="36" rx="7" ry="10"/>
+    <ellipse cx="325" cy="36" rx="7" ry="10"/>
+    <ellipse cx="375" cy="36" rx="7" ry="10"/>
+    <ellipse cx="425" cy="36" rx="7" ry="10"/>
+    <ellipse cx="475" cy="36" rx="7" ry="10"/>
+  </g>
+  <g stroke="#8b5a00" stroke-width=".7" fill="none">
+    <line x1="25" y1="28" x2="25" y2="44"/>
+    <line x1="75" y1="28" x2="75" y2="44"/>
+    <line x1="125" y1="28" x2="125" y2="44"/>
+    <line x1="175" y1="28" x2="175" y2="44"/>
+    <line x1="225" y1="28" x2="225" y2="44"/>
+    <line x1="275" y1="28" x2="275" y2="44"/>
+    <line x1="325" y1="28" x2="325" y2="44"/>
+    <line x1="375" y1="28" x2="375" y2="44"/>
+    <line x1="425" y1="28" x2="425" y2="44"/>
+    <line x1="475" y1="28" x2="475" y2="44"/>
+  </g>
+  <!-- zigzag -->
+  <polyline points="0,46 20,58 40,46 60,58 80,46 100,58 120,46 140,58 160,46 180,58 200,46 220,58 240,46 260,58 280,46 300,58 320,46 340,58 360,46 380,58 400,46 420,58 440,46 460,58 480,46 500,58"
+    fill="none" stroke="#F1C40F" stroke-width="2.5"/>
+  <polyline points="0,53 20,65 40,53 60,65 80,53 100,65 120,53 140,65 160,53 180,65 200,53 220,65 240,53 260,65 280,53 300,65 320,53 340,65 360,53 380,65 400,53 420,65 440,53 460,65 480,53 500,65"
+    fill="none" stroke="#C8860A" stroke-width="1.5"/>
+</svg>
+
+<section id="hero" class="hero">
+  <!-- swallows -->
+  <div class="swallows">
+    <svg class="swallow" style="top:12%;right:8%;width:28px" viewBox="0 0 30 15" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15,8 Q8,2 0,5 Q6,8 15,8 Q24,8 30,5 Q22,2 15,8Z" fill="#2C1503"/>
+      <path d="M15,8 Q12,12 8,14 Q11,10 15,8 Q19,10 22,14 Q18,12 15,8Z" fill="#2C1503"/>
+    </svg>
+    <svg class="swallow" style="top:22%;right:22%;width:22px" viewBox="0 0 30 15" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15,8 Q8,2 0,5 Q6,8 15,8 Q24,8 30,5 Q22,2 15,8Z" fill="#2C1503"/>
+      <path d="M15,8 Q12,12 8,14 Q11,10 15,8 Q19,10 22,14 Q18,12 15,8Z" fill="#2C1503"/>
+    </svg>
+    <svg class="swallow" style="top:8%;left:12%;width:24px" viewBox="0 0 30 15" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15,8 Q8,2 0,5 Q6,8 15,8 Q24,8 30,5 Q22,2 15,8Z" fill="#2C1503"/>
+      <path d="M15,8 Q12,12 8,14 Q11,10 15,8 Q19,10 22,14 Q18,12 15,8Z" fill="#2C1503"/>
+    </svg>
+    <svg class="swallow" style="top:35%;left:6%;width:18px" viewBox="0 0 30 15" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15,8 Q8,2 0,5 Q6,8 15,8 Q24,8 30,5 Q22,2 15,8Z" fill="#2C1503"/>
+      <path d="M15,8 Q12,12 8,14 Q11,10 15,8 Q19,10 22,14 Q18,12 15,8Z" fill="#2C1503"/>
+    </svg>
+    <svg class="swallow" style="top:5%;right:38%;width:20px" viewBox="0 0 30 15" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15,8 Q8,2 0,5 Q6,8 15,8 Q24,8 30,5 Q22,2 15,8Z" fill="#2C1503"/>
+      <path d="M15,8 Q12,12 8,14 Q11,10 15,8 Q19,10 22,14 Q18,12 15,8Z" fill="#2C1503"/>
+    </svg>
+  </div>
+
+  <!-- Big logo -->
+  <div class="hero-logo" style="display:flex;justify-content:center;padding-top:20px;position:relative;z-index:2;">
+    <svg width="140" height="140" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 24px rgba(0,0,0,.25))">
+      <circle cx="40" cy="40" r="38" fill="#1a2f5a"/>
+      <circle cx="40" cy="40" r="38" fill="none" stroke="#C8860A" stroke-width="3"/>
+      <circle cx="40" cy="40" r="33" fill="none" stroke="#C8860A" stroke-width=".8" stroke-dasharray="4,3"/>
+      <path d="M40,8 A16,16 0 1,1 56,34 A12,9 0 1,0 40,8Z" fill="#C8860A"/>
+      <circle cx="54" cy="12" r="2.5" fill="#F1C40F"/>
+      <polygon points="50,14 52,20 48,20" fill="#F1C40F" opacity=".7"/>
+      <polygon points="40,27 24,47 56,47" fill="#C8860A"/>
+      <polygon points="40,27 24,47 56,47" fill="none" stroke="#F1C40F" stroke-width=".8"/>
+      <rect x="27" y="47" width="26" height="16" rx="1" fill="#E8A000"/>
+      <rect x="33" y="50" width="14" height="13" rx="2" fill="#1a2f5a"/>
+      <line x1="27" y1="52" x2="53" y2="52" stroke="#C8860A" stroke-width=".6"/>
+      <line x1="27" y1="57" x2="53" y2="57" stroke="#C8860A" stroke-width=".6"/>
+      <line x1="18" y1="64" x2="18" y2="42" stroke="#5a3000" stroke-width="2.2"/>
+      <path d="M18,42 Q10,35 5,30 Q12,34 15,42" fill="#27AE60"/>
+      <path d="M18,44 Q24,37 28,33 Q26,40 20,44" fill="#2d9a50"/>
+      <line x1="62" y1="64" x2="62" y2="42" stroke="#5a3000" stroke-width="2.2"/>
+      <path d="M62,42 Q70,35 75,30 Q68,34 65,42" fill="#27AE60"/>
+      <path d="M62,44 Q56,37 52,33 Q54,40 60,44" fill="#2d9a50"/>
+      <ellipse cx="40" cy="65" rx="20" ry="3.5" fill="#1E4A6E" opacity=".65"/>
+      <path d="M20,65 Q30,61 40,65 Q50,69 60,65" fill="none" stroke="#4a8aaa" stroke-width="1"/>
+      <circle cx="40" cy="5" r="2" fill="#F1C40F"/>
+      <circle cx="40" cy="75" r="2" fill="#F1C40F"/>
+      <circle cx="5" cy="40" r="2" fill="#F1C40F"/>
+      <circle cx="75" cy="40" r="2" fill="#F1C40F"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-basmala">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-icon">✦</span>
+      <div class="hero-divider-line"></div>
+    </div>
+
+    <div class="hero-verse">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا
+    </div>
+
+    <div class="hero-divider" style="animation-delay:.35s">
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-icon">✦</span>
+      <div class="hero-divider-line"></div>
+    </div>
+
+    <div class="hero-honor">يَتَشَرَّف</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FAMILIES
+══════════════════════════════ -->
+<section class="families-section">
+  <!-- palm divider -->
+  <div class="palm-divider" style="padding-top:0;padding-bottom:20px">
+    <div class="palm-divider-line"></div>
+    <svg width="30" height="36" viewBox="0 0 30 36" xmlns="http://www.w3.org/2000/svg">
+      <line x1="15" y1="36" x2="15" y2="16" stroke="#8b4500" stroke-width="2"/>
+      <path d="M15,16 Q8,10 3,6 Q9,10 12,16" fill="#27AE60"/>
+      <path d="M15,18 Q20,12 24,8 Q21,14 17,18" fill="#27AE60"/>
+      <path d="M15,20 Q7,18 2,18 Q7,20 14,22" fill="#27AE60"/>
+      <path d="M15,20 Q22,18 27,18 Q22,20 16,22" fill="#27AE60"/>
+    </svg>
+    <div class="palm-divider-line"></div>
+  </div>
+
+  <div class="families-grid">
+    <div class="family-card">
+      <div class="family-title">عائلة العريس</div>
+      <div class="family-names-list">
+        عائلة الأستاذ ناصر ركابي
+      </div>
+    </div>
+    <div class="family-card">
+      <div class="family-title">عائلة العروسة</div>
+      <div class="family-names-list">
+        عائلة الأستاذ حازم عبد المنعم
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- border between sections -->
+<svg width="100%" viewBox="0 0 500 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <rect width="500" height="24" fill="#1e4a1e"/>
+  <g fill="#C8860A">
+    <polygon points="0,0 12,12 24,0"/>
+    <polygon points="24,0 36,12 48,0"/>
+    <polygon points="48,0 60,12 72,0"/>
+    <polygon points="72,0 84,12 96,0"/>
+    <polygon points="96,0 108,12 120,0"/>
+    <polygon points="120,0 132,12 144,0"/>
+    <polygon points="144,0 156,12 168,0"/>
+    <polygon points="168,0 180,12 192,0"/>
+    <polygon points="192,0 204,12 216,0"/>
+    <polygon points="216,0 228,12 240,0"/>
+    <polygon points="240,0 252,12 264,0"/>
+    <polygon points="264,0 276,12 288,0"/>
+    <polygon points="288,0 300,12 312,0"/>
+    <polygon points="312,0 324,12 336,0"/>
+    <polygon points="336,0 348,12 360,0"/>
+    <polygon points="360,0 372,12 384,0"/>
+    <polygon points="384,0 396,12 408,0"/>
+    <polygon points="408,0 420,12 432,0"/>
+    <polygon points="432,0 444,12 456,0"/>
+    <polygon points="456,0 468,12 480,0"/>
+    <polygon points="480,0 492,12 500,0"/>
+  </g>
+  <g fill="#1E4A6E" opacity=".8">
+    <polygon points="12,0 24,12 36,0"/>
+    <polygon points="36,0 48,12 60,0"/>
+    <polygon points="60,0 72,12 84,0"/>
+    <polygon points="84,0 96,12 108,0"/>
+    <polygon points="108,0 120,12 132,0"/>
+    <polygon points="132,0 144,12 156,0"/>
+    <polygon points="156,0 168,12 180,0"/>
+    <polygon points="180,0 192,12 204,0"/>
+    <polygon points="204,0 216,12 228,0"/>
+    <polygon points="228,0 240,12 252,0"/>
+    <polygon points="252,0 264,12 276,0"/>
+    <polygon points="276,0 288,12 300,0"/>
+    <polygon points="300,0 312,12 324,0"/>
+    <polygon points="324,0 336,12 348,0"/>
+    <polygon points="348,0 360,12 372,0"/>
+    <polygon points="372,0 384,12 396,0"/>
+    <polygon points="396,0 408,12 420,0"/>
+    <polygon points="420,0 432,12 444,0"/>
+    <polygon points="444,0 456,12 468,0"/>
+    <polygon points="468,0 480,12 492,0"/>
+  </g>
+  <line x1="0" y1="23" x2="500" y2="23" stroke="#C8860A" stroke-width="2"/>
+</svg>
+
+<!-- ══════════════════════════════
+     COUPLE
+══════════════════════════════ -->
+<section id="couple" class="couple-section">
+  <div class="couple-invite">بدعوة سيادتكم لحضور حفل زفاف</div>
+  <div class="couple-names">
+    الأستاذ أحمد
+    <span class="couple-amp">✦ &amp; ✦</span>
+    الآنسة D
+  </div>
+
+  <div style="margin-top:24px;display:flex;justify-content:center;gap:20px;position:relative;z-index:2;">
+    <!-- decorative croc left -->
+    <svg width="70" height="28" viewBox="0 0 80 28" xmlns="http://www.w3.org/2000/svg" opacity=".5">
+      <ellipse cx="42" cy="14" rx="36" ry="11" fill="#27AE60"/>
+      <polygon points="6,6 16,14 6,22" fill="#2d8a50"/>
+      <polygon points="78,10 68,14 78,18" fill="#27AE60"/>
+      <circle cx="14" cy="8" r="2.5" fill="#F1C40F"/>
+      <circle cx="14" cy="20" r="2.5" fill="#F1C40F"/>
+      <g fill="#1e4a1e" opacity=".6">
+        <rect x="22" y="3" width="5" height="4" rx="1"/>
+        <rect x="32" y="3" width="5" height="4" rx="1"/>
+        <rect x="42" y="3" width="5" height="4" rx="1"/>
+        <rect x="52" y="3" width="5" height="4" rx="1"/>
+        <rect x="22" y="21" width="5" height="4" rx="1"/>
+        <rect x="32" y="21" width="5" height="4" rx="1"/>
+        <rect x="42" y="21" width="5" height="4" rx="1"/>
+        <rect x="52" y="21" width="5" height="4" rx="1"/>
+      </g>
+    </svg>
+    <svg width="70" height="28" viewBox="0 0 80 28" xmlns="http://www.w3.org/2000/svg" opacity=".5" style="transform:scaleX(-1)">
+      <ellipse cx="42" cy="14" rx="36" ry="11" fill="#27AE60"/>
+      <polygon points="6,6 16,14 6,22" fill="#2d8a50"/>
+      <polygon points="78,10 68,14 78,18" fill="#27AE60"/>
+      <circle cx="14" cy="8" r="2.5" fill="#F1C40F"/>
+      <circle cx="14" cy="20" r="2.5" fill="#F1C40F"/>
+      <g fill="#1e4a1e" opacity=".6">
+        <rect x="22" y="3" width="5" height="4" rx="1"/>
+        <rect x="32" y="3" width="5" height="4" rx="1"/>
+        <rect x="42" y="3" width="5" height="4" rx="1"/>
+        <rect x="52" y="3" width="5" height="4" rx="1"/>
+        <rect x="22" y="21" width="5" height="4" rx="1"/>
+        <rect x="32" y="21" width="5" height="4" rx="1"/>
+        <rect x="42" y="21" width="5" height="4" rx="1"/>
+        <rect x="52" y="21" width="5" height="4" rx="1"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     DATE
+══════════════════════════════ -->
+<svg width="100%" viewBox="0 0 500 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;transform:scaleY(-1)">
+  <rect width="500" height="24" fill="#1e4a1e"/>
+  <g fill="#C8860A">
+    <polygon points="0,0 12,12 24,0"/><polygon points="24,0 36,12 48,0"/><polygon points="48,0 60,12 72,0"/>
+    <polygon points="72,0 84,12 96,0"/><polygon points="96,0 108,12 120,0"/><polygon points="120,0 132,12 144,0"/>
+    <polygon points="144,0 156,12 168,0"/><polygon points="168,0 180,12 192,0"/><polygon points="192,0 204,12 216,0"/>
+    <polygon points="216,0 228,12 240,0"/><polygon points="240,0 252,12 264,0"/><polygon points="264,0 276,12 288,0"/>
+    <polygon points="288,0 300,12 312,0"/><polygon points="312,0 324,12 336,0"/><polygon points="336,0 348,12 360,0"/>
+    <polygon points="360,0 372,12 384,0"/><polygon points="384,0 396,12 408,0"/><polygon points="408,0 420,12 432,0"/>
+    <polygon points="432,0 444,12 456,0"/><polygon points="456,0 468,12 480,0"/><polygon points="480,0 492,12 500,0"/>
+  </g>
+  <line x1="0" y1="23" x2="500" y2="23" stroke="#C8860A" stroke-width="2"/>
+</svg>
+
+<section id="date" class="date-section">
+  <div class="date-inner">
+    <div class="section-title">موعد الحفل</div>
+    <div class="section-subtitle">وذلك بمشيئة الله تعالى</div>
+
+    <div class="date-boxes">
+      <div class="date-box">
+        <div class="date-box-label">اليوم</div>
+        <div class="date-box-value">الخميس</div>
+      </div>
+      <div class="date-box">
+        <div class="date-box-label">التاريخ</div>
+        <div class="date-box-value">٢٠ / ٨ / ٢٠٢٦</div>
+      </div>
+      <div class="date-box">
+        <div class="date-box-label">الوقت</div>
+        <div class="date-box-value">٨:٠٠ م</div>
+      </div>
+    </div>
+
+    <div class="date-phrase" style="margin-top:16px">
+      <strong>النادي النوبي — السويس</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     COUNTDOWN
+══════════════════════════════ -->
+<section class="countdown-section">
+  <div class="countdown-title">العد التنازلي للحفل</div>
+  <div class="cd-grid" id="cdGrid">
+    <div class="cd-box"><span class="cd-num" id="cdD">--</span><span class="cd-lbl">أيام</span></div>
+    <div class="cd-box"><span class="cd-num" id="cdH">--</span><span class="cd-lbl">ساعات</span></div>
+    <div class="cd-box"><span class="cd-num" id="cdM">--</span><span class="cd-lbl">دقائق</span></div>
+    <div class="cd-box"><span class="cd-num" id="cdS">--</span><span class="cd-lbl">ثواني</span></div>
+  </div>
+  <div class="cd-done" id="cdDone">🌙 لقد حان موعد الاحتفال 🌙</div>
+</section>
+
+<!-- ══════════════════════════════
+     MAP
+══════════════════════════════ -->
+<svg width="100%" viewBox="0 0 500 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <rect width="500" height="24" fill="#1e4a1e"/>
+  <g fill="#D35400">
+    <polygon points="0,24 12,12 24,24"/><polygon points="24,24 36,12 48,24"/><polygon points="48,24 60,12 72,24"/>
+    <polygon points="72,24 84,12 96,24"/><polygon points="96,24 108,12 120,24"/><polygon points="120,24 132,12 144,24"/>
+    <polygon points="144,24 156,12 168,24"/><polygon points="168,24 180,12 192,24"/><polygon points="192,24 204,12 216,24"/>
+    <polygon points="216,24 228,12 240,24"/><polygon points="240,24 252,12 264,24"/><polygon points="264,24 276,12 288,24"/>
+    <polygon points="288,24 300,12 312,24"/><polygon points="312,24 324,12 336,24"/><polygon points="336,24 348,12 360,24"/>
+    <polygon points="360,24 372,12 384,24"/><polygon points="384,24 396,12 408,24"/><polygon points="408,24 420,12 432,24"/>
+    <polygon points="432,24 444,12 456,24"/><polygon points="456,24 468,12 480,24"/><polygon points="480,24 492,12 500,24"/>
+  </g>
+  <line x1="0" y1="1" x2="500" y2="1" stroke="#C8860A" stroke-width="2"/>
+</svg>
+
+<section id="location" class="map-section">
+  <div class="map-inner">
+    <div class="section-title">📍 موقع الحفل</div>
+    <div class="section-subtitle">النادي النوبي — السويس</div>
+    <div class="map-frame">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=32.4573%2C30.0078%2C32.4773%2C30.0278&layer=mapnik&marker=30.0178%2C32.4673"
+        allowfullscreen loading="lazy" title="النادي النوبي السويس"></iframe>
+    </div>
+    <a class="map-cta" href="https://www.google.com/maps/place/Nubia+Sports+Club+in+Suez/@30.0178,32.4673,17z" target="_blank" rel="noopener">
+      🗺 عرض الموقع على خرائط Google
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<!-- footer top border -->
+<svg width="100%" viewBox="0 0 500 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;background:#1E4A6E">
+  <rect width="500" height="60" fill="#1e4a1e"/>
+  <!-- crocs row -->
+  <g>
+    <g transform="translate(55,30)">
+      <ellipse cx="0" cy="0" rx="40" ry="13" fill="#27AE60"/>
+      <polygon points="-40,-12 -28,0 -40,12" fill="#2d8a50"/>
+      <polygon points="40,-10 30,0 40,10" fill="#27AE60"/>
+      <circle cx="-28" cy="-7" r="2.5" fill="#F1C40F"/>
+      <circle cx="-28" cy="7" r="2.5" fill="#F1C40F"/>
+      <g fill="#1e4a1e" opacity=".6">
+        <rect x="-16" y="-13" width="5" height="5" rx="1"/>
+        <rect x="-6" y="-13" width="5" height="5" rx="1"/>
+        <rect x="4" y="-13" width="5" height="5" rx="1"/>
+        <rect x="14" y="-13" width="5" height="5" rx="1"/>
+        <rect x="-16" y="8" width="5" height="5" rx="1"/>
+        <rect x="-6" y="8" width="5" height="5" rx="1"/>
+        <rect x="4" y="8" width="5" height="5" rx="1"/>
+        <rect x="14" y="8" width="5" height="5" rx="1"/>
+      </g>
+    </g>
+    <g transform="translate(200,30)">
+      <ellipse cx="0" cy="0" rx="40" ry="13" fill="#27AE60"/>
+      <polygon points="-40,-12 -28,0 -40,12" fill="#2d8a50"/>
+      <polygon points="40,-10 30,0 40,10" fill="#27AE60"/>
+      <circle cx="-28" cy="-7" r="2.5" fill="#F1C40F"/>
+      <circle cx="-28" cy="7" r="2.5" fill="#F1C40F"/>
+      <g fill="#1e4a1e" opacity=".6">
+        <rect x="-16" y="-13" width="5" height="5" rx="1"/>
+        <rect x="-6" y="-13" width="5" height="5" rx="1"/>
+        <rect x="4" y="-13" width="5" height="5" rx="1"/>
+        <rect x="14" y="-13" width="5" height="5" rx="1"/>
+        <rect x="-16" y="8" width="5" height="5" rx="1"/>
+        <rect x="-6" y="8" width="5" height="5" rx="1"/>
+        <rect x="4" y="8" width="5" height="5" rx="1"/>
+        <rect x="14" y="8" width="5" height="5" rx="1"/>
+      </g>
+    </g>
+    <!-- pyramid center -->
+    <polygon points="250,5 265,55 235,55" fill="#C8860A"/>
+    <polygon points="250,15 260,45 240,45" fill="#E8A000" opacity=".5"/>
+    <g transform="translate(345,30) scale(-1,1)">
+      <ellipse cx="0" cy="0" rx="40" ry="13" fill="#27AE60"/>
+      <polygon points="-40,-12 -28,0 -40,12" fill="#2d8a50"/>
+      <polygon points="40,-10 30,0 40,10" fill="#27AE60"/>
+      <circle cx="-28" cy="-7" r="2.5" fill="#F1C40F"/>
+      <circle cx="-28" cy="7" r="2.5" fill="#F1C40F"/>
+      <g fill="#1e4a1e" opacity=".6">
+        <rect x="-16" y="-13" width="5" height="5" rx="1"/>
+        <rect x="-6" y="-13" width="5" height="5" rx="1"/>
+        <rect x="4" y="-13" width="5" height="5" rx="1"/>
+        <rect x="14" y="-13" width="5" height="5" rx="1"/>
+        <rect x="-16" y="8" width="5" height="5" rx="1"/>
+        <rect x="-6" y="8" width="5" height="5" rx="1"/>
+        <rect x="4" y="8" width="5" height="5" rx="1"/>
+        <rect x="14" y="8" width="5" height="5" rx="1"/>
+      </g>
+    </g>
+    <g transform="translate(460,30) scale(-1,1)">
+      <ellipse cx="0" cy="0" rx="34" ry="11" fill="#27AE60"/>
+      <polygon points="-34,-10 -24,0 -34,10" fill="#2d8a50"/>
+      <polygon points="34,-8 26,0 34,8" fill="#27AE60"/>
+      <circle cx="-24" cy="-6" r="2.5" fill="#F1C40F"/>
+    </g>
+  </g>
+  <line x1="0" y1="59" x2="500" y2="59" stroke="#C8860A" stroke-width="2"/>
+</svg>
+
+<footer class="footer">
+  <div class="nile-water">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+
+  <!-- Sailboats -->
+  <div class="boats">
+    <svg class="boat" width="55" height="55" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="30,5 30,42 12,42" fill="rgba(245,230,202,.7)"/>
+      <polygon points="30,10 30,42 46,42" fill="rgba(245,230,202,.4)"/>
+      <line x1="30" y1="3" x2="30" y2="44" stroke="#C8860A" stroke-width="1.5"/>
+      <ellipse cx="30" cy="50" rx="20" ry="5" fill="#1E4A6E" opacity=".6"/>
+      <path d="M10,48 Q20,44 30,48 Q40,52 50,48" fill="none" stroke="#4a8aaa" stroke-width="1"/>
+    </svg>
+    <svg class="boat" width="40" height="40" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="30,8 30,42 14,42" fill="rgba(245,230,202,.6)"/>
+      <polygon points="30,12 30,42 44,42" fill="rgba(245,230,202,.35)"/>
+      <line x1="30" y1="6" x2="30" y2="44" stroke="#C8860A" stroke-width="1.5"/>
+      <ellipse cx="30" cy="50" rx="18" ry="4" fill="#1E4A6E" opacity=".5"/>
+    </svg>
+    <svg class="boat" width="50" height="50" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="30,5 30,42 12,42" fill="rgba(245,230,202,.7)"/>
+      <polygon points="30,10 30,42 46,42" fill="rgba(245,230,202,.4)"/>
+      <line x1="30" y1="3" x2="30" y2="44" stroke="#C8860A" stroke-width="1.5"/>
+      <ellipse cx="30" cy="50" rx="20" ry="5" fill="#1E4A6E" opacity=".6"/>
+      <path d="M10,48 Q20,44 30,48 Q40,52 50,48" fill="none" stroke="#4a8aaa" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="footer-phrase">دَامَتْ دِيَارُكُمْ عَامِرَةً بِالأَفْرَاح</div>
+  <div class="footer-copy">النادي النوبي — السويس &nbsp;|&nbsp; ٢٠ / ٨ / ٢٠٢٦</div>
+
+  <!-- bottom geo strip -->
+  <svg width="100%" height="14" viewBox="0 0 500 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:18px">
+    <rect width="500" height="14" fill="#1e4a1e"/>
+    <g fill="#D35400">
+      <polygon points="0,14 10,0 20,14"/><polygon points="20,14 30,0 40,14"/><polygon points="40,14 50,0 60,14"/>
+      <polygon points="60,14 70,0 80,14"/><polygon points="80,14 90,0 100,14"/><polygon points="100,14 110,0 120,14"/>
+      <polygon points="120,14 130,0 140,14"/><polygon points="140,14 150,0 160,14"/><polygon points="160,14 170,0 180,14"/>
+      <polygon points="180,14 190,0 200,14"/><polygon points="200,14 210,0 220,14"/><polygon points="220,14 230,0 240,14"/>
+      <polygon points="240,14 250,0 260,14"/><polygon points="260,14 270,0 280,14"/><polygon points="280,14 290,0 300,14"/>
+      <polygon points="300,14 310,0 320,14"/><polygon points="320,14 330,0 340,14"/><polygon points="340,14 350,0 360,14"/>
+      <polygon points="360,14 370,0 380,14"/><polygon points="380,14 390,0 400,14"/><polygon points="400,14 410,0 420,14"/>
+      <polygon points="420,14 430,0 440,14"/><polygon points="440,14 450,0 460,14"/><polygon points="460,14 470,0 480,14"/>
+      <polygon points="480,14 490,0 500,14"/>
+    </g>
+  </svg>
+</footer>
+
+<!-- Scroll to top -->
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="40" cy="40" rx="36" ry="12" fill="#27AE60"/>
+    <circle cx="22" cy="32" r="4" fill="#F1C40F"/>
+    <circle cx="22" cy="48" r="4" fill="#F1C40F"/>
+  </svg>
+</div>
+
+<script>
+// Countdown
+const TARGET = new Date('2026-08-20T20:00:00');
+function pad(n){ return String(n).padStart(2,'0'); }
+function tick(){
+  const diff = TARGET - new Date();
+  if(diff <= 0){
+    document.getElementById('cdGrid').style.display='none';
+    document.getElementById('cdDone').style.display='block';
+    return;
+  }
+  document.getElementById('cdD').textContent = Math.floor(diff/86400000);
+  document.getElementById('cdH').textContent = pad(Math.floor(diff%86400000/3600000));
+  document.getElementById('cdM').textContent = pad(Math.floor(diff%3600000/60000));
+  document.getElementById('cdS').textContent = pad(Math.floor(diff%60000/1000));
+}
+tick(); setInterval(tick,1000);
+
+// Scroll top button
+const st = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  st.classList.toggle('visible', window.scrollY > 300);
+});
+
+// Intersection Observer for fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.animationPlayState = 'running';
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.family-card, .date-box, .cd-box').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
